@@ -17,14 +17,19 @@ ActiveRecord::Schema.define(version: 20170917120950) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "slack_channel"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "github_username"
+    t.string   "slack_username"
+    t.integer  "team_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["team_id"], name: "index_users_on_team_id", using: :btree
   end
 
 end

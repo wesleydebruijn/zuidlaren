@@ -1,5 +1,8 @@
 <%= simple_form_for @user do |f| %>
   <%= f.input :name %>
+  <%= f.input :github_username %>
+  <%= f.input :slack_username %>
+  <%= f.association :team %>
   <%= f.submit class: "btn btn-primary" %>
   <%= link_to 'Terug', users_path, class: "btn" %>
 <% end %>
