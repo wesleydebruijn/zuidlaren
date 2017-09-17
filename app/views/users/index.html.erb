@@ -1,11 +1,11 @@
-<%= render 'main_navigation' %>
-
 <h1>Users</h1>
 
 <table class="table">
   <thead>
   <tr>
     <th>Naam</th>
+    <th>GitHub</th>
+    <th>Slack</th>
     <th></th>
   </tr>
   </thead>
@@ -16,7 +16,7 @@
       <td><%= link_to user.name, edit_user_path(user) %></td>
       <td><%= user.github_username %></td>
       <td><%= user.slack_username %></td>
-      <td class="text-right"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-default btn-xs' %></td>
+      <td class="text-right"><%= link_to 'X', user, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-light btn-sm' %></td>
     </tr>
   <% end %>
   </tbody>
