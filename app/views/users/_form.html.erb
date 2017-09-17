@@ -1,0 +1,5 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Terug', users_path, class: "btn" %>
+<% end %>

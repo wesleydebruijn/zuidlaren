@@ -1,0 +1,23 @@
+<h1>Users</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Naam</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, edit_user_path(user) %></td>
+      <td class="text-right"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-default btn-xs' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Nieuwe User', new_user_path, class: 'btn btn-primary' %>
+</p>
