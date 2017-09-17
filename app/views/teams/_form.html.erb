@@ -1,6 +1,23 @@
 <%= simple_form_for @team do |f| %>
   <%= f.input :name %>
   <%= f.input :slack_channel %>
+
+  <h2>Events</h2>
+  <nav class="nav nav-tabs" id="eventsTabs" role="tablist">
+    <% Event.all.group_by(&:event_group).each_with_index do |(event_group, events), index| %>
+      <a class="nav-item nav-link <%= 'active' if index == 0 %>" id="tab-<%= event_group.name %>" data-toggle="tab"  role="tab" aria-controls="nav-<%= event_group.name %>" href="#nav-<%= event_group.name %>">
+        <%= event_group.name %>
+      </a>
+    <% end %>
+  </nav>
+  <div class="tab-content" id="nav-eventsContent">
+    <% Event.all.group_by(&:event_group).each_with_index do |(event_group, events), index| %>
+      <div class="tab-pane fade <%= 'show active' if index == 0 %>" id="nav-<%= event_group.name %>" role="tabpanel" aria-labelledby="nav-<%= event_group.name %>-tab">
+        <%= f.association :events, collection: events, as: :check_boxes, label: false, class: 'text' %>
+      </div>
+    <% end %>
+  </div>
+
   <%= f.submit class: "btn btn-primary" %>
   <%= link_to 'Terug', teams_path, class: "btn" %>
 <% end %>

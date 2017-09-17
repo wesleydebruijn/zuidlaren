@@ -1,0 +1,27 @@
+<h1>Events</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Naam</th>
+    <th>Actie</th>
+    <th>Groep</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to event.name, edit_event_path(event) %></td>
+      <td><%= event.action %></td>
+      <td><%= event.event_group.name %></td>
+      <td class="text-right"><%= link_to 'X', event, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-light btn-sm' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Nieuw Event', new_event_path, class: 'btn btn-primary' %>
+</p>

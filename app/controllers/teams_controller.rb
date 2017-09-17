@@ -41,7 +41,8 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(
       :name,
-      :slack_channel
+      :slack_channel,
+      event_ids: []
     )
   end
 

@@ -1,0 +1,7 @@
+<%= simple_form_for @event do |f| %>
+  <%= f.input :name %>
+  <%= f.input :action %>
+  <%= f.association :event_group %>
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Terug', events_path, class: "btn" %>
+<% end %>

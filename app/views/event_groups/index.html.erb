@@ -1,0 +1,23 @@
+<h1>Event Groups</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Naam</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @event_groups.each do |event_group| %>
+    <tr>
+      <td><%= link_to event_group.name, edit_event_group_path(event_group) %></td>
+      <td class="text-right"><%= link_to 'X', event_group, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-light btn-sm' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Nieuwe Event Group', new_event_group_path, class: 'btn btn-primary' %>
+</p>
