@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+  redis:
+    image: redis
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -11,3 +13,12 @@ services:
       - "3001:3000"
     depends_on:
       - db
+      - redis
+  worker:
+    build: .
+    volumes:
+      - .:/zuidlaren
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    links:
+     - db
+     - redis

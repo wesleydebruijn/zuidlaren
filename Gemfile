@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'simple_form'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platform: :mri

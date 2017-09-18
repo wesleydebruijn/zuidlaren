@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   resources :teams
@@ -6,4 +8,6 @@ Rails.application.routes.draw do
   resources :events
 
   root 'dashboard#index'
+
+  mount Sidekiq::Web => '/sidekiq'
 end
