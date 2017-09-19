@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       :name,
       :github_username,
       :slack_username,
-      :team_id
+      team_ids: []
     )
   end
 

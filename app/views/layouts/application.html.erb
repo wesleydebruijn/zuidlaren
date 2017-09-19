@@ -26,10 +26,7 @@
             <%= link_to 'Users', users_path, class: "nav-link #{'active' if controller?('users')}" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Event Groups', event_groups_path, class: "nav-link #{'active' if controller?('event_groups')}" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Events', events_path, class: "nav-link #{'active' if controller?('events')}" %>
+            <%= link_to 'Events', event_groups_path, class: "nav-link #{'active' if controller?('event_groups')}" %>
           </li>
         </ul>
       </div>
@@ -38,30 +35,6 @@
 
   <div class="container">
     <%= yield %>
-  </div>
-
-  <div class="container">
-
-    <footer class="footer">
-      <p data-toggle="modal" data-target="#berendModal">© Berend Botje</p>
-
-      <div class="modal fade" id="berendModal" tabindex="-1" role="dialog" aria-labelledby="berendModalTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="berendModalTitle">Berend Botje</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <iframe width=460" height="315" src="https://www.youtube.com/embed/BlMMS94T8Uc" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
   </div>
 
   </body>

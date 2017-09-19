@@ -1,13 +1,5 @@
 class EventsController < ApplicationController
 
-  def index
-    @events = Event.all
-  end
-
-  def new
-    @event = Event.new
-  end
-
   def edit
     @event = Event.find(params[:id])
   end
@@ -15,7 +7,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to events_path, notice: 'Event is aangemaakt.'
+      redirect_to edit_event_group_path(@event.event_group), notice: 'Event is aangemaakt.'
     else
       render :new
     end
@@ -24,7 +16,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to events_path, notice: 'Event is aangepast.'
+      redirect_to edit_event_group_path(@event.event_group), notice: 'Event is aangepast.'
     else
       render :edit
     end
@@ -33,7 +25,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path, notice: 'Event is verwijderd.'
+    redirect_to edit_event_group_path(@event.event_group), notice: 'Event is verwijderd.'
   end
 
   private

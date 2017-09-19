@@ -3,10 +3,10 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Naam</th>
+    <th>Name</th>
     <th>Slack channel</th>
-    <th>Aantal teamleden</th>
-    <th>Aantal events</th>
+    <th>Users</th>
+    <th>Events</th>
     <th></th>
   </tr>
   </thead>
@@ -18,12 +18,12 @@
       <td><%= team.slack_channel %></td>
       <td><%= team.users.count %></td>
       <td><%= team.events.count %></td>
-      <td class="text-right"><%= link_to 'X', team, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-light btn-sm' %></td>
+      <td class="text-right"><%= link_to 'X', team, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <p>
-  <%= link_to 'Nieuw Team', new_team_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Team', new_team_path, class: 'btn btn-primary' %>
 </p>

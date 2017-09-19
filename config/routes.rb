@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :event_groups
   resources :events
+  resources :todos
 
   root 'dashboard#index'
 

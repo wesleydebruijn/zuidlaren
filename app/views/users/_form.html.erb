@@ -2,7 +2,10 @@
   <%= f.input :name %>
   <%= f.input :github_username %>
   <%= f.input :slack_username %>
-  <%= f.association :team %>
+
+  <h2>Teams</h2>
+  <%= f.association :teams, collection: Team.all, as: :check_boxes, label: false, class: 'text' %>
+
   <%= f.submit class: "btn btn-primary" %>
-  <%= link_to 'Terug', users_path, class: "btn" %>
+  <%= link_to 'Back', users_path, class: "btn" %>
 <% end %>

@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Naam</th>
+    <th>Name</th>
     <th>GitHub</th>
     <th>Slack</th>
     <th></th>
@@ -16,12 +16,12 @@
       <td><%= link_to user.name, edit_user_path(user) %></td>
       <td><%= user.github_username %></td>
       <td><%= user.slack_username %></td>
-      <td class="text-right"><%= link_to 'X', user, method: :delete, data: { confirm: 'Weet je het zeker?' }, class: 'btn btn-light btn-sm' %></td>
+      <td class="text-right"><%= link_to 'X', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <p>
-  <%= link_to 'Nieuwe User', new_user_path, class: 'btn btn-primary' %>
+  <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
 </p>

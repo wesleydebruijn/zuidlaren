@@ -2,22 +2,43 @@
   <%= f.input :name %>
   <%= f.input :slack_channel %>
 
+  <h2>Members</h2>
+  <%= f.association :users, collection: User.all, as: :check_boxes, label: false, class: 'text' %>
+
   <h2>Events</h2>
-  <nav class="nav nav-tabs" id="eventsTabs" role="tablist">
-    <% Event.all.group_by(&:event_group).each_with_index do |(event_group, events), index| %>
-      <a class="nav-item nav-link <%= 'active' if index == 0 %>" id="tab-<%= event_group.name %>" data-toggle="tab"  role="tab" aria-controls="nav-<%= event_group.name %>" href="#nav-<%= event_group.name %>">
-        <%= event_group.name %>
-      </a>
-    <% end %>
-  </nav>
-  <div class="tab-content" id="nav-eventsContent">
-    <% Event.all.group_by(&:event_group).each_with_index do |(event_group, events), index| %>
-      <div class="tab-pane fade <%= 'show active' if index == 0 %>" id="nav-<%= event_group.name %>" role="tabpanel" aria-labelledby="nav-<%= event_group.name %>-tab">
-        <%= f.association :events, collection: events, as: :check_boxes, label: false, class: 'text' %>
-      </div>
-    <% end %>
-  </div>
+  <%= multi_checkbox_tabs(f, 'events', EventGroup.all, Event.all.group_by(&:event_group)) %>
 
   <%= f.submit class: "btn btn-primary" %>
-  <%= link_to 'Terug', teams_path, class: "btn" %>
+  <%= link_to 'Back', teams_path, class: "btn" %>
+<% end %>
+
+<h2>Todos</h2>
+<% if @team.id %>
+  <h2>Events</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Completed</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @team.todos.each do |todo| %>
+        <tr>
+          <td><%= link_to todo.title, edit_todo_path(todo) %></td>
+          <td><%= todo.completed %></td>
+          <td class="text-right"><%= link_to 'X', todo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= simple_form_for Todo.new do |f| %>
+      <%= f.input :title %>
+      <%= f.association :user %>
+      <%= f.input :completed, as: :hidden, input_html: {value: false} %>
+      <%= f.input :team_id, as: :hidden, input_html: {value: @team.id} %>
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 <% end %>
