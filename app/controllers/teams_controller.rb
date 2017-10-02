@@ -5,14 +5,14 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html { render }
-      format.json { render json: @teams.to_json(include: [:users, :events, :todos]) }
+      format.json { render json: @teams.to_json(include: [{ users: { include: :repositories}}, :events, :todos]) }
     end
   end
 
   def show
     @team = Team.find(params[:id])
 
-    render json: @team.to_json(include: [:users, :events, :todos])
+    render json: @team.to_json(include: [{ users: { include: :repositories}}, :events, :todos])
   end
 
   def new
