@@ -26,7 +26,7 @@ class EventGroupsController < ApplicationController
   def create
     @event_group = EventGroup.new(event_group_params)
     if @event_group.save
-      redirect_to event_groups_path, notice: 'Groep is aangemaakt.'
+      redirect_to event_groups_path, notice: 'Event Group is aangemaakt.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class EventGroupsController < ApplicationController
   def update
     @event_group = EventGroup.find(params[:id])
     if @event_group.update(event_group_params)
-      redirect_to event_groups_path, notice: 'Groep is aangepast.'
+      redirect_to event_groups_path, notice: 'Event Group is aangepast.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class EventGroupsController < ApplicationController
   def destroy
     @event_group = EventGroup.find(params[:id])
     @event_group.destroy
-    redirect_to event_groups_path, notice: 'Groep is verwijderd.'
+    redirect_to event_groups_path, notice: 'Event Group is verwijderd.'
   end
 
   private
