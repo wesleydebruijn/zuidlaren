@@ -53,7 +53,8 @@ class RepositoriesController < ApplicationController
     params.require(:repository).permit(
       :name,
       :slug,
-      user_ids: []
+      user_ids: [],
+      event_ids: []
     )
   end
 

@@ -35,7 +35,8 @@ class EventsController < ApplicationController
       :name,
       :action,
       :event_group_id,
-      team_ids: []
+      team_ids: [],
+      repository_ids: []
     )
   end
 
