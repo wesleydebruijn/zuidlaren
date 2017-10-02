@@ -2,6 +2,17 @@ class EventGroupsController < ApplicationController
 
   def index
     @event_groups = EventGroup.all
+
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @event_groups.to_json(include: :events) }
+    end
+  end
+
+  def show
+    @event_group = EventGroup.find(params[:id])
+
+    render json: @event_groups.to_json(include: :events)
   end
 
   def new
