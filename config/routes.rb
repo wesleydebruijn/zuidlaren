@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :event_groups
   resources :events
   resources :todos
+  resources :repositories
 
   root 'dashboard#index'
 

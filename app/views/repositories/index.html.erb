@@ -1,0 +1,27 @@
+<h1>Repositories</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Slug</th>
+    <th>Users</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @repositories.each do |repository| %>
+    <tr>
+      <td><%= link_to repository.name, edit_repository_path(repository) %></td>
+      <td><%= repository.slug %></td>
+      <td><%= repository.users.count %></td>
+      <td class="text-right"><%= link_to 'X', repository, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'New Repository', new_repository_path, class: 'btn btn-primary' %>
+</p>

@@ -1,0 +1,10 @@
+<%= simple_form_for @repository do |f| %>
+  <%= f.input :name %>
+  <%= f.input :slug %>
+
+  <h2>Users</h2>
+  <%= f.association :users, collection: User.all, as: :check_boxes, label: false, class: 'text' %>
+
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Back', repositories_path, class: "btn" %>
+<% end %>
