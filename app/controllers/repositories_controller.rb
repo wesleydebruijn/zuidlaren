@@ -26,7 +26,7 @@ class RepositoriesController < ApplicationController
   def create
     @repository = Repository.new(repository_params)
     if @repository.save
-      redirect_to repositories_path, notice: 'Repository is aangemaakt.'
+      redirect_to repositories_path, notice: 'Repository is created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class RepositoriesController < ApplicationController
   def update
     @repository = Repository.find(params[:id])
     if @repository.update(repository_params)
-      redirect_to repositories_path, notice: 'Repository is aangepast.'
+      redirect_to repositories_path, notice: 'Repository is updated.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class RepositoriesController < ApplicationController
   def destroy
     @repository = Repository.find(params[:id])
     @repository.destroy
-    redirect_to repositories_path, notice: 'Repository is verwijderd.'
+    redirect_to repositories_path, notice: 'Repository is deleted.'
   end
 
   private

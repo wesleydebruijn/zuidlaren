@@ -7,7 +7,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      redirect_to edit_team_path(@todo.team), notice: 'Todo is aangemaakt.'
+      redirect_to edit_team_path(@todo.team), notice: 'Todo is created.'
     else
       render :new
     end
@@ -16,7 +16,7 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     if @todo.update(todo_params)
-      redirect_to edit_team_path(@todo.team), notice: 'Todo is aangepast.'
+      redirect_to edit_team_path(@todo.team), notice: 'Todo is updated.'
     else
       render :edit
     end
@@ -25,7 +25,7 @@ class TodosController < ApplicationController
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy
-    redirect_to edit_team_path(@todo.team), notice: 'Todo is verwijderd.'
+    redirect_to edit_team_path(@todo.team), notice: 'Todo is deleted.'
   end
 
   private
