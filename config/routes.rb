@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  root 'dashboard#index'
   resources :teams
   resources :users
   resources :event_groups
@@ -9,7 +10,12 @@ Rails.application.routes.draw do
   resources :todos
   resources :repositories
 
-  root 'dashboard#index'
+  scope :api, only: [:index, :show], format: true, constraints: { format: 'json' } do
+    resources :teams
+    resources :users
+    resources :event_groups
+    resources :repositories
+  end
 
   mount Sidekiq::Web => '/sidekiq'
 end
