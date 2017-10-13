@@ -1,0 +1,35 @@
+<%= simple_form_for @event_group do |f| %>
+  <%= f.input :name %>
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Back', event_groups_path, class: "btn" %>
+<% end %>
+<% if @event_group.id %>
+  <h2>Events</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @event_group.events.each do |event| %>
+        <tr>
+          <td><%= link_to event.name, edit_event_path(event) %></td>
+          <td><%= event.action %></td>
+          <td class="text-right"><%= link_to 'X', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= simple_form_for Event.new do |f| %>
+      <%= f.input :name %>
+      <%= f.input :action %>
+      <%= f.input :event_group_id, as: :hidden, input_html: {value: @event_group.id} %>
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>

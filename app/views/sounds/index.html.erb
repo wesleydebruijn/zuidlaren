@@ -1,0 +1,26 @@
+<h1>Sounds</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Naam</th>
+    <th>Slug</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sounds.each do |sound| %>
+    <tr>
+      <td><%= link_to sound.id, edit_sound_path(sound) %></td>
+      <td><%= sound.name %></td>
+      <td><%= sound.slug %></td>
+      <td class="text-right"><%= link_to 'X', sound, method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'New Event Group', new_event_group_path, class: 'btn btn-primary' %>
+</p>

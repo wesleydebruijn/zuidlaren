@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002220211) do
+ActiveRecord::Schema.define(version: 20171013114401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20171002220211) do
     t.integer "user_id"
     t.index ["repository_id"], name: "index_repositories_users_on_repository_id", using: :btree
     t.index ["user_id"], name: "index_repositories_users_on_user_id", using: :btree
+  end
+
+  create_table "sounds", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "sound_file_name"
+    t.string   "sound_content_type"
+    t.integer  "sound_file_size"
+    t.datetime "sound_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "teams", force: :cascade do |t|

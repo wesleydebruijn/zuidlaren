@@ -16,6 +16,8 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'simple_form'
 gem 'sidekiq'
 
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

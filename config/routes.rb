@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events
   resources :todos
   resources :repositories
+  resources :sounds
 
   scope :api, only: [:index, :show], format: true, constraints: { format: 'json' } do
     resources :teams
