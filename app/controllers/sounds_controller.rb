@@ -8,6 +8,19 @@ class SoundsController < ApplicationController
     @sound = Sound.find(params[:id])
   end
 
+  def new
+    @sound = Sound.new
+  end
+
+  def play
+    sound = Sound.where(slug: params[:slug]).first
+    if sound
+      PlaySoundJob.perform_later(sound.sound_file_name, sound.sound.url, sound.slug)
+    end
+
+    render nothing: true, status: 204
+  end
+
   def create
     @sound = Sound.new(sound_params)
     if @sound.save
@@ -37,10 +50,8 @@ class SoundsController < ApplicationController
   def sound_params
     params.require(:sound).permit(
         :name,
-        :action,
-        :sound_id,
-        team_ids: [],
-        repository_ids: []
+        :slug,
+        :sound,
     )
   end
 
