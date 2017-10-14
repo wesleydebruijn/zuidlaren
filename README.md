@@ -3,22 +3,18 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Chicken Sounds as a Service
 
-* Ruby version
+To get it working do this:
 
-* System dependencies
+Install paprefs (on host machine):
+`$ apt-get install paprefs`
 
-* Configuration
+Launch paprefs (PulseAudio Preferences) > Network Server > [X] Enable network access to local sound devices.
 
-* Database creation
+Restart PulseAudio:
+`$ service pulseaudio restart`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Check if it worked or restart machine:
+`$ (pax11publish || xprop -root PULSE_SERVER) | grep -Eo 'tcp:[^ ]*'`
+You should get: `tcp:myhostname:4713`
