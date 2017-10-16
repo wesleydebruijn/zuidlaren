@@ -16,9 +16,14 @@ services:
       - redis
   worker:
     build: .
+    privileged: true
     volumes:
       - .:/zuidlaren
+      - ~/.config/pulse/cookie:/run/pulse/cookie
     command: bundle exec sidekiq -C config/sidekiq.yml
+    environment:
+      - PULSE_SERVER=tcp:172.17.0.1:4713
+      - PULSE_COOKIE=/run/pulse/cookie
     links:
      - db
      - redis

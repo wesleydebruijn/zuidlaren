@@ -1,0 +1,20 @@
+# copied from mother
+development: &dev
+  s3_region: eu-west-1
+  bucket: websend-dev
+  # max_file_size: 10485760
+
+test:
+  bucket_name: websend-test
+  <<: *dev
+
+staging:
+  <<: *dev
+
+acceptance:
+  <<: *dev
+
+production:
+  <<: *dev
+  bucket: websend-dev
+  # max_file_size: 10485760

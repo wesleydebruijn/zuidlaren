@@ -1,0 +1,7 @@
+<%= simple_form_for @sound do |f| %>
+  <%= f.input :name %>
+  <%= f.input :slug %>
+  <%= f.input :sound %>
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Back', sounds_path, class: "btn" %>
+<% end %>

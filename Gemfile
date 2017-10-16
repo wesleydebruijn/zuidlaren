@@ -16,6 +16,12 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'simple_form'
 gem 'sidekiq'
 
+gem 'dotenv-rails'
+
+gem 'paperclip', "~> 5.0.0.beta1"
+gem 'acts_as_list'
+gem 'aws-sdk', '< 3.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
