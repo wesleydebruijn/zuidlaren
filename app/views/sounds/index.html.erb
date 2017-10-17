@@ -16,8 +16,8 @@
       <td><%= link_to sound.id, edit_sound_path(sound) %></td>
       <td><%= sound.name %></td>
       <td><%= sound.slug %></td>
-      <td><%= link_to(sound.sound_file_name, play_sounds_path(sound.slug)) %></td>
-      <td class="text-right"><%= link_to 'X', sound, method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
+      <td><%= link_to sound.sound_file_name, play_sounds_path(sound.slug), method: :post, class: 'btn btn-light btn-sm' %></td>
+      <td><%= link_to 'X', sound, method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm' %></td>
     </tr>
   <% end %>
   </tbody>
