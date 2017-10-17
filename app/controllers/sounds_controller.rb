@@ -1,5 +1,7 @@
 class SoundsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token, only: :play
+
   def index
     @sounds = Sound.all
   end
