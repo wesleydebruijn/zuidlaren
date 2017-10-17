@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :todos
   resources :repositories
   resources :sounds do
-    get 'play/:slug', to: 'sounds#play', as: :play, on: :collection
+    post 'play/:slug', to: 'sounds#play', as: :play, on: :collection
   end
 
   scope :api, only: [:index, :show], format: true, constraints: { format: 'json' } do
