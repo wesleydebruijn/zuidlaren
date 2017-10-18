@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+    volumes:
+      - data:/var/lib/postgresql/data
   redis:
     image: redis
   web:
@@ -19,7 +21,7 @@ services:
     privileged: true
     volumes:
       - .:/zuidlaren
-      - ~/.config/pulse/cookie:/run/pulse/cookie
+      - /home/websend/.config/pulse/cookie:/run/pulse/cookie
     command: bundle exec sidekiq -C config/sidekiq.yml
     environment:
       - PULSE_SERVER=tcp:172.17.0.1:4713
@@ -27,3 +29,5 @@ services:
     links:
      - db
      - redis
+volumes:
+  data:
