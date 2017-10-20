@@ -14,9 +14,17 @@ class SoundsController < ApplicationController
     @sound = Sound.new
   end
 
+  def start
+    ENV['PLAY'] = 'true'
+  end
+
+  def stop
+    ENV['PLAY'] = 'false'
+  end
+
   def play
     sound = Sound.where(slug: params[:slug]).first
-    if sound
+    if sound && ENV['PLAY'] == 'true'
       PlaySoundJob.perform_later(sound.sound_file_name, sound.sound.url, sound.slug)
     end
 
