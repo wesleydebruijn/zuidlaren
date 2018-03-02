@@ -2,17 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
-    respond_to do |format|
-      format.html { render }
-      format.json { render json: @users.to_json(include: [:teams, :todos]) }
-    end
   end
 
   def show
     @user = User.find(params[:id])
-
-    render json: @user.to_json(include: [:teams, :todos])
   end
 
   def new
