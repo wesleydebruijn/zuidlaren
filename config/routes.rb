@@ -22,5 +22,12 @@ Rails.application.routes.draw do
     resources :repositories
   end
 
+  namespace :auth do
+    get :login
+    post :authenticate
+    get :callback
+    get :logout
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 end

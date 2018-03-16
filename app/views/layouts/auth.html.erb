@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zuidlaren</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <%= link_to 'Zuidlaren', root_path, class: 'navbar-brand' %>
+    </div>
+  </nav>
+
+  <div class="container">
+    <% flash.nil? == false && flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>">
+          <%= content_tag :div, msg, :id => "flash-#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  </body>
+</html>
