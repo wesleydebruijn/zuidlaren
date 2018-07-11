@@ -2,17 +2,10 @@ class RepositoriesController < ApplicationController
 
   def index
     @repositories = Repository.all
-
-    respond_to do |format|
-      format.html { render }
-      format.json { render json: @repositories.to_json(include: [:users, :repositories]) }
-    end
   end
 
   def show
     @repository = Repository.find(params[:id])
-
-    render json: @repository.to_json(include: [:users, :repositories])
   end
 
   def new

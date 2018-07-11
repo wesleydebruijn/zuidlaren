@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     get 'start', to: 'sounds#start', on: :collection
   end
 
-  scope :api, only: [:index, :show], format: true, constraints: { format: 'json' } do
+  namespace :api, only: [:index, :show] do
     resources :teams
-    resources :users
-    resources :event_groups
-    resources :repositories
+    resources :users, param: :github_username
+    resources :event_groups, param: :name
+    resources :repositories, param: :slug
   end
 
   namespace :auth do
